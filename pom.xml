@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>1.481</version>
+    <version>1.609</version>
   </parent>
   <artifactId>release</artifactId>
   <packaging>hpi</packaging>
@@ -19,30 +19,38 @@
    <url>https://github.com/jenkinsci/release-plugin</url>
   </scm>
   <developers>
-  	<developer>
-  		<id>petehayes</id>
-  		<name>Peter Hayes</name>
-  		<email>petehayes@gmail.com</email>
-  		<timezone>-6</timezone>
-  	</developer>
+        <developer>
+                <id>petehayes</id>
+                <name>Peter Hayes</name>
+                <email>petehayes@gmail.com</email>
+                <timezone>-6</timezone>
+        </developer>
   </developers>
   <dependencies>
-  	<dependency>
-  		<groupId>org.jenkins-ci.main</groupId>
-  		<artifactId>maven-plugin</artifactId>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.jenkins-ci.plugins</groupId>
-  		<artifactId>dashboard-view</artifactId>
-  		<version>2.0</version>
-  		<optional>true</optional>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.jenkins-ci.plugins</groupId>
-  		<artifactId>promoted-builds</artifactId>
-  		<version>2.0</version>
-  		<optional>true</optional>
-  	</dependency>
+        <dependency>
+                <groupId>org.jenkins-ci.main</groupId>
+                <artifactId>maven-plugin</artifactId>
+                <version>2.9</version>
+        </dependency>
+        <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>dashboard-view</artifactId>
+                <version>2.9.4</version>
+                <optional>true</optional>
+        </dependency>
+        <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>promoted-builds</artifactId>
+                <version>2.21</version>
+                <optional>true</optional>
+        </dependency>
+        <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>matrix-project</artifactId>
+                <version>1.4.1</version>
+                <optional>false</optional>
+        </dependency>
+
   </dependencies>
 
 
@@ -59,6 +67,5 @@
             <url>http://repo.jenkins-ci.org/public/</url>
         </pluginRepository>
     </pluginRepositories>
-</project>  
-  
+</project>
 

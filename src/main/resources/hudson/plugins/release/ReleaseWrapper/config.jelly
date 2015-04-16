@@ -43,6 +43,10 @@
     <f:entry title="${%Override build parameters}" help="/plugin/release/help-overrideBuildParameters.html">
         <f:checkbox name="overrideBuildParameters" field="overrideBuildParameters" />
     </f:entry>
+    
+    <f:entry title="${%Skip project build}" help="/plugin/release/help-skipProjectBuild.html">
+        <f:checkbox name="skipProjectBuild" field="skipProjectBuild" />
+    </f:entry>
 
 	<f:block>
 

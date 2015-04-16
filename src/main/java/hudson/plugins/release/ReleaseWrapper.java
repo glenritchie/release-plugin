@@ -110,6 +110,7 @@ public class ReleaseWrapper extends BuildWrapper implements MatrixAggregatable {
     private String releaseVersionTemplate;
     private boolean doNotKeepLog;
     private boolean overrideBuildParameters;
+    private boolean skipProjectBuild;
     private List<ParameterDefinition> parameterDefinitions = new ArrayList<ParameterDefinition>();
     private List<BuildStep> preBuildSteps = new ArrayList<BuildStep>();
     private List<BuildStep> postBuildSteps = new ArrayList<BuildStep>();
@@ -192,6 +193,14 @@ public class ReleaseWrapper extends BuildWrapper implements MatrixAggregatable {
     
     public void setOverrideBuildParameters(boolean overrideBuildParameters) {
         this.overrideBuildParameters = overrideBuildParameters;
+    }
+    
+    public boolean isSkipProjectBuild() {
+        return skipProjectBuild;
+    }
+    
+    public void setSkipProjectBuild(boolean skipProjectBuild) {
+        this.skipProjectBuild = skipProjectBuild;
     }
 
     public List<ParameterDefinition> getParameterDefinitions() {
@@ -341,6 +350,12 @@ public class ReleaseWrapper extends BuildWrapper implements MatrixAggregatable {
         
         // return environment
         return new Environment() {
+            
+            @Override
+            public boolean skipProjectBuilders() {
+
+                return skipProjectBuild;
+            }
         	
             @Override
             public boolean tearDown(AbstractBuild build, BuildListener listener) throws IOException,
@@ -457,6 +472,7 @@ public class ReleaseWrapper extends BuildWrapper implements MatrixAggregatable {
             instance.releaseVersionTemplate = formData.getString("releaseVersionTemplate");
             instance.doNotKeepLog = formData.getBoolean("doNotKeepLog");
             instance.overrideBuildParameters = formData.getBoolean("overrideBuildParameters");
+            instance.skipProjectBuild = formData.getBoolean("skipProjectBuild");
             instance.parameterDefinitions = Descriptor.newInstancesFromHeteroList(req, formData, "parameters", ParameterDefinition.all());
             instance.preBuildSteps = Descriptor.newInstancesFromHeteroList(req, formData, "preBuildSteps", getSteps());
             instance.preMatrixBuildSteps = Descriptor.newInstancesFromHeteroList(req, formData, "preMatrixBuildSteps", getSteps());
